@@ -1,9 +1,9 @@
 <?php
 // Update these to match your environment
-$DB_HOST = '127.0.0.1';
+$DB_HOST = 'db';
 $DB_NAME = 'dirt';
-$DB_USER = 'root';
-$DB_PASS = '';
+$DB_USER = 'dirtuser';
+$DB_PASS = 'update_password';
 
 try {
     $pdo = new PDO(
