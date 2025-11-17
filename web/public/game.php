@@ -2,6 +2,7 @@
 require_once __DIR__.'/../config/db.php';
 require_once __DIR__.'/score.php';
 
+
 $game_id = isset($_GET['game_id']) ? intval($_GET['game_id']) : 0;
 if (!$game_id) { header('Location: index.php'); exit; }
 
@@ -26,6 +27,33 @@ $roundsMap = [];
 foreach ($roundRows as $r) {
     $roundsMap[$r['round_number']][] = $r;
 }
+
+// Fetch players in this game
+$playersStmt = $pdo->prepare("
+    SELECT p.id, p.name
+    FROM game_players gp
+    JOIN players p ON p.id = gp.player_id
+    WHERE gp.game_id = ?
+");
+$playersStmt->execute([$game_id]);
+$players = $playersStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch total score per player
+$totalsStmt = $pdo->prepare("
+    SELECT player_id, SUM(score) as total_score
+    FROM rounds
+    WHERE game_id = ?
+    GROUP BY player_id
+");
+$totalsStmt->execute([$game_id]);
+$totalsRaw = $totalsStmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Format totals into associative array
+$totals = [];
+foreach ($totalsRaw as $row) {
+    $totals[$row['player_id']] = $row['total_score'];
+}
+
 ?>
 <!doctype html>
 <html>
@@ -84,7 +112,20 @@ foreach ($roundRows as $r) {
       <?php endif; ?>
     </section>
   <?php endfor; ?>
+	<section class="summary-card">
+		<h2>Player Totals</h2>
 
+		<div class="totals-grid">
+			<?php foreach ($players as $p): ?>
+				<div class="total-box">
+					<div class="player-name"><?= htmlspecialchars($p['name']) ?></div>
+					<div class="player-total">
+						<?= $totals[$p['id']] ?? 0 ?>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</section>
   <a class="btn outline" href="index.php">Back to Dashboard</a>
 </main>
 <script src="js/app.js"></script>
