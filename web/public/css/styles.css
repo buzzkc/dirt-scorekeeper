@@ -1,0 +1,72 @@
+:root{
+  --bg:#f7f7f8;
+  --card:#ffffff;
+  --muted:#666;
+  --accent:#2b6ef6;
+  --danger:#e03e2d;
+  --radius:10px;
+  --max-width:900px;
+  --gap:16px;
+}
+*{box-sizing:border-box}
+body{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  margin:0;
+  background:linear-gradient(180deg,#eef2ff 0%,var(--bg) 100%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+}
+.site-header{
+  background:transparent;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  max-width:var(--max-width);
+  margin:0 auto;
+}
+.site-header h1{margin:0;font-size:1.25rem}
+.site-header nav a{margin-left:10px;text-decoration:none;color:var(--accent)}
+.container{
+  max-width:var(--max-width);
+  margin:18px auto;
+  padding:12px;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:12px;
+  box-shadow:0 6px 18px rgba(20,20,40,0.06);
+  margin-bottom:var(--gap);
+}
+.btn{
+  display:inline-block;
+  padding:10px 14px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+}
+.btn.outline{background:transparent;color:var(--accent);border:1px solid rgba(43,110,246,0.12)}
+.player-list{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.player-list li{background:#f1f6ff;padding:6px 10px;border-radius:8px}
+
+.grid{display:grid;grid-template-columns:repeat( auto-fit, minmax(180px,1fr) );gap:12px}
+.player-block{background:#fbfbff;border-radius:8px;padding:8px}
+label{display:block;margin-top:8px}
+input[type=number], input[type=text], input[type=password], select{width:100%;padding:8px;border-radius:6px;border:1px solid #e6e9ef}
+.actions{margin-top:12px;display:flex;gap:8px;align-items:center}
+.scores{width:100%;border-collapse:collapse}
+.scores th,.scores td{padding:8px;border-bottom:1px solid #f0f0f0;text-align:left}
+.stats{width:100%;border-collapse:collapse}
+.stats th,.stats td{padding:8px;border-bottom:1px solid #f0f0f0;text-align:left}
+.error{color:var(--danger);}
+
+/* responsive */
+@media (max-width:600px){
+  .site-header{flex-direction:column;align-items:flex-start}
+  .grid{grid-template-columns:repeat( auto-fit, minmax(140px,1fr) )}
+}
