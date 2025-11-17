@@ -28,16 +28,6 @@ foreach ($roundRows as $r) {
     $roundsMap[$r['round_number']][] = $r;
 }
 
-// Fetch players in this game
-$playersStmt = $pdo->prepare("
-    SELECT p.id, p.name
-    FROM game_players gp
-    JOIN players p ON p.id = gp.player_id
-    WHERE gp.game_id = ?
-");
-$playersStmt->execute([$game_id]);
-$players = $playersStmt->fetchAll(PDO::FETCH_ASSOC);
-
 // Fetch total score per player
 $totalsStmt = $pdo->prepare("
     SELECT player_id, SUM(score) as total_score
