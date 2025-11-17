@@ -22,7 +22,7 @@ $players->execute([$game_id]);
 $pids = $players->fetchAll(PDO::FETCH_COLUMN);
 
 $allMade = true; $noneMade = true;
-$ins = $pdo->prepare('INSERT INTO rounds (game_id,round_number,player_id,bid,hands_won,score,all_players_made_bid,no_players_made_bid) VALUES (?,?,?,?,?,?,?,?)');
+$ins = $pdo->prepare('INSERT INTO rounds (game_id,round_number,player_id,bid,hands_won,score,all_players_made_bid,no_players_made_bid,created_at) VALUES (?,?,?,?,?,?,?,?,now())');
 
 foreach ($pids as $pid) {
     $bid = intval($_POST['bid_'.$pid] ?? 0);
