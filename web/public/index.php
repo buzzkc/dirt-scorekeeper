@@ -42,7 +42,7 @@ $players = $pdo->query("SELECT * FROM players ORDER BY created_at DESC")->fetchA
     <?php if ($lastGame): ?>
       <p>Title: <?=htmlspecialchars($lastGame['title'])?> — Rounds: <?=$lastGame['num_rounds']?></p>
       <p>Players in last game: <?=$playersCount?></p>
-      <a class="btn" href="game.php?game_id=<?=$lastGame['id']}">Resume</a>
+      <a class="btn" href="game.php?game_id=<?=$lastGame['id']?>">Resume</a>
       <a class="btn outline" href="new_game.php?use_last=1">Start New Game with Same Players</a>
     <?php else: ?>
       <p>No games found. Start a new one.</p>
