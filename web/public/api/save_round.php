@@ -29,9 +29,9 @@ foreach ($pids as $pid) {
     $won = intval($_POST['won_'.$pid] ?? 0);
     $score = calculate_score($bid,$won);
 
-    if ($bid != $won) $allMade = false;
-    if ($won > 0) $noneMade = false;
-    $ins->execute([$game_id,$round_number,$pid,$bid,$won,$score,false,false]);
+    if ($bid != $won) $allMade = 0;
+    if ($won > 0) $noneMade = 0;
+    $ins->execute([$game_id,$round_number,$pid,$bid,$won,$score,0,0]);
 }
 
 // Update flags for this round (all rows)
