@@ -20,7 +20,7 @@ services:
       - dirtnet
 
   db:
-    image: mysql:8.0
+    image: mariadb:10.5.8
     container_name: dirt_db
     restart: unless-stopped
     environment:
