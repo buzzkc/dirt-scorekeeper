@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../config/db.php';
-require_once __DIR__.'/../score.php';
+require_once __DIR__.'/score.php';
 
 $game_id = isset($_GET['game_id']) ? intval($_GET['game_id']) : 0;
 if (!$game_id) { header('Location: index.php'); exit; }
