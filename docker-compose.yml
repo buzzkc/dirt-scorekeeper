@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   app:
-    image: php:8.2-apache
+    #image: php:8.2-apache
     build: .
     container_name: dirt_app
     restart: unless-stopped
