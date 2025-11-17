@@ -70,3 +70,42 @@ input[type=number], input[type=text], input[type=password], select{width:100%;pa
   .site-header{flex-direction:column;align-items:flex-start}
   .grid{grid-template-columns:repeat( auto-fit, minmax(140px,1fr) )}
 }
+
+.summary-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.summary-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.totals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.total-box {
+    background: #f6f8fa;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+}
+
+.player-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.player-total {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
